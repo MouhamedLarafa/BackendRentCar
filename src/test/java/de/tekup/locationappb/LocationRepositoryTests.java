@@ -17,7 +17,7 @@ import java.util.List;
 @TestMethodOrder(MethodOrderer.class)
 public class LocationRepositoryTests {
 
-   /* @Autowired
+    @Autowired
     LocationRepository locationRepository;
 
     static Location location = Location.builder().status("test").build();
@@ -65,6 +65,5 @@ public class LocationRepositoryTests {
         Location l = locationRepository.findById(location.getId()).orElse(null);
         Assertions.assertNull(l);
 
-    }*/
-
+    }
 }

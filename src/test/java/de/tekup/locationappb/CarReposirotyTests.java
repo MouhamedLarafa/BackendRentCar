@@ -17,7 +17,7 @@ import java.util.List;
 @ExtendWith(SpringExtension.class)
 @TestMethodOrder(MethodOrderer.class)
 public class CarReposirotyTests {
-   /* @Autowired
+    @Autowired
     CarRepository carRepository;
 
     static Car car = Car.builder().brand("test").model("test").build();
@@ -65,8 +65,4 @@ public class CarReposirotyTests {
         Car c = carRepository.findById(car.getId()).orElse(null);
         Assertions.assertNull(c);
     }
-
-*/
-
-
 }

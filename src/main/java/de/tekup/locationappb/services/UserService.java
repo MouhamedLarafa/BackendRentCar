@@ -18,8 +18,11 @@ public class UserService {
     private RoleRepository roleRepository;
     private PasswordEncoder passwordEncoder;
 
+    static String ADMIN = "Admin";
+    static String USER = "User";
+
     public User userRegister(User user){
-        Role role=roleRepository.findById("User").orElseThrow(() -> new RuntimeException("Role 'User' not found"));
+        Role role=roleRepository.findById(USER).orElseThrow(() -> new RuntimeException("Role 'User' not found"));
         ;
         user.getRole().add(role);
         return userRepository.save(user);
@@ -27,33 +30,33 @@ public class UserService {
     }
     public void initRolesAndUsers(){
         Role adminRole=new Role();
-        adminRole.setRoleName("Admin");
+        adminRole.setRoleName(ADMIN);
         adminRole.setRoleDescription("Admin Role");
         roleRepository.save(adminRole);
 
         Role userRole=new Role();
-        userRole.setRoleName("User");
-        userRole.setRoleDescription("User Role");
+        userRole.setRoleName(USER);
+        userRole.setRoleDescription(USER+" Role");
         roleRepository.save(userRole);
 
         User adminUser=new User();
         adminUser.setUsername("Admin1");
-        adminUser.setUserFirstName("Admin");
-        adminUser.setUserLastName("Admin");
+        adminUser.setUserFirstName(ADMIN);
+        adminUser.setUserLastName(ADMIN);
         adminUser.setUserPassword(getEncodedPassword("admin@123"));
         adminUser.getRole().add(adminRole);
         userRepository.save(adminUser);
         User user=new User();
         user.setUsername("user1");
-        user.setUserFirstName("user");
-        user.setUserLastName("user");
+        user.setUserFirstName(USER);
+        user.setUserLastName(USER);
         user.setUserPassword(getEncodedPassword("user@123"));
         user.getRole().add(userRole);
         userRepository.save(user);
     }
 
     public User registerNewUser(User user) {
-        Role role = roleRepository.findById("User").orElseThrow(() -> new RuntimeException("Role 'User' not found"));
+        Role role = roleRepository.findById(USER).orElseThrow(() -> new RuntimeException("Role 'User' not found"));
         ;
 
 
@@ -63,7 +66,7 @@ public class UserService {
         return userRepository.save(user);
     }
     public List<User> getUsers(){
-        Role role=roleRepository.findById("User").orElseThrow(() -> new RuntimeException("Role 'User' not found"));
+        Role role=roleRepository.findById(USER).orElseThrow(() -> new RuntimeException("Role 'User' not found"));
         
         return userRepository.findUserByRole(role);
     }
