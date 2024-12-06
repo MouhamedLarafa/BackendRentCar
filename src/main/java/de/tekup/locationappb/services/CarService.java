@@ -4,7 +4,6 @@ package de.tekup.locationappb.services;
 import de.tekup.locationappb.entites.Car;
 import de.tekup.locationappb.repositories.CarRepository;
 import lombok.AllArgsConstructor;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;

@@ -1,16 +1,21 @@
 package de.tekup.locationappb.entites;
 
-import lombok.Data;
+import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 
 @Entity
-@Data
-public class Location {
+@Getter
+@Setter
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
+public class Location implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

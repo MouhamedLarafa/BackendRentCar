@@ -3,21 +3,24 @@ package de.tekup.locationappb.entites;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
-import java.time.LocalDate;
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.List;
 
-@Data
+
 @Entity
+@Getter
+@Setter
+@Builder
+@AllArgsConstructor
 @NoArgsConstructor
 @JsonIdentityInfo(property = "model",generator = ObjectIdGenerators.PropertyGenerator.class)
-public class Car {
+public class Car implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;

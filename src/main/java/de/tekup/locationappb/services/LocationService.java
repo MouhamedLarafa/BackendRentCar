@@ -23,17 +23,21 @@ public class LocationService {
     private EmailSenderService emailSenderService;
 
     public Location addLocation(Location location){
-        User user = userRepository.findById(location.getUser().getUsername()).get();
+        User user = userRepository.findById(location.getUser().getUsername()).orElse(null);
 
-        Car car1 = carRepository.findById(location.getCar().getId()).get();
-
-        location.setUser(user);
-        location.setCar(car1);
-        //calculate price
+        Car car1 = carRepository.findById(location.getCar().getId()).orElse(null);
+        if(user!=null){
+            location.setUser(user);
+        }
+        if(car1!=null){
+            location.setCar(car1);
+        }
         location.setPrice(calculatePrice(location.getStartDate(), location.getEndDate(), location.getCar()));
         location.setStatus("In progress");
         try {
-            emailSenderService.sendmail(user.getUsername());
+            if(user != null) {
+                emailSenderService.sendmail(user.getUsername());
+            }
         }
         catch (Exception e){
             System.out.println(e.getMessage());
@@ -41,7 +45,6 @@ public class LocationService {
         return locationRepository.save(location);
     }
 
-    //calculate price
     private double calculatePrice(LocalDate startDate, LocalDate endDate, Car car){
         long nbDays = ChronoUnit.DAYS.between(startDate,endDate)+1;
         return  car.getDayPrice() * nbDays;

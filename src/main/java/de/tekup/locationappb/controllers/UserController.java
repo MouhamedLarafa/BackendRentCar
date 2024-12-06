@@ -1,7 +1,5 @@
 package de.tekup.locationappb.controllers;
 
-import de.tekup.locationappb.entites.Car;
-import de.tekup.locationappb.entites.Location;
 import de.tekup.locationappb.entites.Role;
 import de.tekup.locationappb.entites.User;
 import de.tekup.locationappb.services.UserService;
@@ -12,7 +10,6 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.PostConstruct;
 import java.util.List;
-import java.util.Optional;
 
 @AllArgsConstructor
 @Controller

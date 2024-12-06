@@ -13,8 +13,7 @@ import java.util.List;
 @CrossOrigin("http://localhost:4200")
 public interface CarRepository extends JpaRepository<Car,Integer> {
 
-    // http://localhost:8080/api/cars/search/findByBrandContaining?brand='name of brand'
-    List<Car> findByBrandContaining(String brand); //containing =  like %'k'%
+    List<Car> findByBrandContaining(String brand);
 
     @Query(value = "SELECT * FROM car where id not in " +
             "( SELECT car_id from location where location.end_date > ':startDate' " +

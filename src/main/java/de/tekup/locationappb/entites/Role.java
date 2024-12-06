@@ -1,27 +1,19 @@
 package de.tekup.locationappb.entites;
 
-import jdk.jfr.Description;
+import lombok.*;
 
 import javax.persistence.*;
+import java.io.Serializable;
+
 @Entity
-public class Role {
+@Getter
+@Setter
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
+public class Role implements Serializable {
     @Id
     private String roleName;
     private String roleDescription;
 
-    public String getRoleName() {
-        return roleName;
-    }
-
-    public void setRoleName(String roleName) {
-        this.roleName = roleName;
-    }
-
-    public String getRoleDescription() {
-        return roleDescription;
-    }
-
-    public void setRoleDescription(String roleDescription) {
-        this.roleDescription = roleDescription;
-    }
 }
