@@ -19,7 +19,8 @@ public class UserService {
     private PasswordEncoder passwordEncoder;
 
     public User userRegister(User user){
-        Role role=roleRepository.findById("User").get();
+        Role role=roleRepository.findById("User").orElseThrow(() -> new RuntimeException("Role 'User' not found"));
+        ;
         user.getRole().add(role);
         return userRepository.save(user);
 
@@ -52,7 +53,8 @@ public class UserService {
     }
 
     public User registerNewUser(User user) {
-        Role role = roleRepository.findById("User").get();
+        Role role = roleRepository.findById("User").orElseThrow(() -> new RuntimeException("Role 'User' not found"));
+        ;
 
 
         user.getRole().add(role);
@@ -61,7 +63,8 @@ public class UserService {
         return userRepository.save(user);
     }
     public List<User> getUsers(){
-        Role role=roleRepository.findById("User").get();
+        Role role=roleRepository.findById("User").orElseThrow(() -> new RuntimeException("Role 'User' not found"));
+        
         return userRepository.findUserByRole(role);
     }
     public User getUserById(String id){
