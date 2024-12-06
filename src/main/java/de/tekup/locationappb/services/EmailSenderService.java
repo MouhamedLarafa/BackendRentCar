@@ -15,7 +15,7 @@ public class EmailSenderService {
     public void sendmail(String destinataire)throws MessagingException {
         MimeMessage mimeMessage=javaMailSender.createMimeMessage();
         MimeMessageHelper mimeMessageHelper=new MimeMessageHelper(mimeMessage,true);
-        mimeMessageHelper.setFrom("mokhtarabbes9@gmail.com");
+        mimeMessageHelper.setFrom("larafamouhamed5@gmail.com");
         mimeMessageHelper.setTo(destinataire);
         mimeMessageHelper.setText("Nous avons accusons réception de la demande de réservation que vous avez effectuée \n nous vous contacterons dans les plus brefs délais");
         mimeMessageHelper.setSubject("Demande location voiture");
