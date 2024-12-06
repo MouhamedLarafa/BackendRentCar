@@ -28,7 +28,6 @@ public class LocationRepositoryTests {
         location = locationRepository.save(location);
         log.info("id"  + location.getId());
         log.info("ajout ==>" + location.toString());
-        Assertions.assertNotNull(location.getId());
         Assertions.assertNotEquals(0,location.getId());
     }
 
@@ -45,8 +44,7 @@ public class LocationRepositoryTests {
     @Test
     @Order(3)
     public void trouverLocation(){
-        List<Location> locations = new ArrayList<>();
-        locationRepository.findAll().forEach(locations::add);
+        List<Location> locations = new ArrayList<>(locationRepository.findAll());
         log.info("List voiture : " + locations);
         Assertions.assertTrue(locations.size()>0);
     }
@@ -54,7 +52,8 @@ public class LocationRepositoryTests {
     @Test
     @Order(4)
     public void chercherLocation(){
-        Location l = locationRepository.findById(location.getId()).get();
+        Location l = locationRepository.findById(location.getId()).orElse(null);
+        assert l != null;
         Assertions.assertEquals(l.getId(),location.getId());
     }
 
