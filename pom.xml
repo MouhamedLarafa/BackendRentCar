@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>de.tekup</groupId>
 	<artifactId>location-app-B</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.0</version>
 	<name>LocationApp-B</name>
 	<description>LocationApp-B</description>
 	<properties>
