@@ -14,7 +14,7 @@ services:
       - backend-network
 
   spring:
-    image: mohamed0x/rental-car.jar:1.0.0
+    image: mohamed0x/rental-car.jar:1.1.0
     ports:
       - "8082:8082"
     environment:
